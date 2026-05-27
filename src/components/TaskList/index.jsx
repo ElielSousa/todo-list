@@ -5,9 +5,16 @@ import TaskItem from "./TaskItem";
 const TaskList = () => {
   const { taskList } = useContext(TaskContext);
   return (
-    <ul>
-      {taskList.map(task => <TaskItem key={task.id} task={task} />)}
-    </ul>
+    <>
+      {taskList.length ? (
+        <ul>
+          {taskList.map(task => <TaskItem key={task.id} task={task} />)}
+        </ul>
+      ) : (
+        <p>Nenhuma tarefa adicionada</p>
+      )}
+
+    </>
   );
 };
 
