@@ -7,22 +7,25 @@ const TaskItem = ({ task }) => {
   const [newTaskName, setNewTaskName] = useState(task.name);
 
   const handleSubmit = () => {
-    task.name = newTaskName;
-    setUpdatingTask(task);
-    updateTask(task.id);
-    setShowUpdateInput(false);
+    if (newTaskName.trim()) {
+      task.name = newTaskName;
+      setUpdatingTask(task);
+      updateTask(task.id);
+      setShowUpdateInput(false);
+    }
   };
 
   const handleCancel = () => {
     setNewTaskName(task.name);
     setShowUpdateInput(false);
   };
+
   return (
     <>
       {showUpdateInput ? (
         <div>
           <input value={newTaskName} onChange={(e) => setNewTaskName(e.target.value)} />
-          <button onClick={handleSubmit}>Criar</button>
+          <button onClick={handleSubmit}>Salvar</button>
           <button onClick={handleCancel}>Cancelar</button>
         </div>
       ) : (

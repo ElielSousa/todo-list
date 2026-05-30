@@ -11,8 +11,10 @@ const TaskInput = () => {
   };
 
   const handleSubmit = () => {
-    addTask(task);
-    setTaskName("");
+    if (taskName.trim()) {
+      addTask(task);
+      setTaskName("");
+    }
   };
 
   return (
