@@ -4,6 +4,7 @@ export const TaskContext = createContext({});
 
 export const TaskProvider = ({ children }) => {
   const [taskList, setTaskList] = useState([]);
+  const [updatingTask, setUpdatingTask] = useState({});
 
   const addTask = (newTask) => {
     setTaskList(prev => [...prev, newTask]);
@@ -14,8 +15,12 @@ export const TaskProvider = ({ children }) => {
     setTaskList(newList);
   };
 
+  const updateTask = (updatingId) => {
+    const newList = taskList.map(task => task.id === updatingId ? updateTask : task);
+  };
+
   return (
-    <TaskContext.Provider value={{ taskList, addTask, removeTask }}>
+    <TaskContext.Provider value={{ taskList, addTask, removeTask, setUpdatingTask, updateTask }}>
       {children}
     </TaskContext.Provider>
   );

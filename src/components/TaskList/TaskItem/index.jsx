@@ -1,15 +1,38 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { TaskContext } from "../../../providers/TaskContext";
 
 const TaskItem = ({ task }) => {
-  const { removeTask } = useContext(TaskContext);
+  const { removeTask, updateTask, setUpdatingTask } = useContext(TaskContext);
+  const [showUpdateInput, setShowUpdateInput] = useState(false);
+  const [newTaskName, setNewTaskName] = useState(task.name);
 
+  const handleSubmit = () => {
+    task.name = newTaskName;
+    setUpdatingTask(task);
+    updateTask(task.id);
+    setShowUpdateInput(false);
+  };
+
+  const handleCancel = () => {
+    setNewTaskName(task.name);
+    setShowUpdateInput(false);
+  };
   return (
-    <li>
-      <p>{task.name}</p>
-      <button>Editar</button>
-      <button onClick={() => removeTask(task.id)}>Excluir</button>
-    </li>
+    <>
+      {showUpdateInput ? (
+        <div>
+          <input value={newTaskName} onChange={(e) => setNewTaskName(e.target.value)} />
+          <button onClick={handleSubmit}>Criar</button>
+          <button onClick={handleCancel}>Cancelar</button>
+        </div>
+      ) : (
+        <li>
+          <p>{task.name}</p>
+          <button onClick={() => setShowUpdateInput(true)}>Editar</button>
+          <button onClick={() => removeTask(task.id)}>Excluir</button>
+        </li>
+      )}
+    </>
   );
 };
 
