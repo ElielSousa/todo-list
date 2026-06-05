@@ -10,6 +10,7 @@ const TaskItem = ({ task }) => {
     editingValue,
     setEditingValue,
     startUpdatingTask,
+    completeTask,
   } = useContext(TaskContext);
 
   const handleCancel = () => {
@@ -29,6 +30,11 @@ const TaskItem = ({ task }) => {
         </div>
       ) : (
         <li>
+          <input
+            type="checkbox"
+            onChange={() => completeTask(task.id)}
+            checked={task.done}
+          />
           <p>{task.name}</p>
           <button onClick={() => startUpdatingTask(task)}>Editar</button>
           <button onClick={() => removeTask(task.id)}>Excluir</button>

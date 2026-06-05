@@ -49,6 +49,14 @@ export const TaskProvider = ({ children }) => {
     setEditingValue("");
   };
 
+  const completeTask = (completingId) => {
+    setTaskList((prev) =>
+      prev.map((task) =>
+        task.id === completingId ? { ...task, done: !task.done } : task,
+      ),
+    );
+  };
+
   return (
     <TaskContext.Provider
       value={{
@@ -61,6 +69,7 @@ export const TaskProvider = ({ children }) => {
         setEditingValue,
         startUpdatingTask,
         updateTask,
+        completeTask,
       }}
     >
       {children}
