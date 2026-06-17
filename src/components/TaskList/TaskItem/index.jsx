@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { TaskContext } from "../../../providers/TaskContext";
 
 const TaskItem = ({ task }) => {
@@ -13,23 +13,33 @@ const TaskItem = ({ task }) => {
     completeTask,
   } = useContext(TaskContext);
 
+  const isEditing = editingId === task.id;
+
   const handleCancel = () => {
     setEditingValue(task.name);
   };
 
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.select();
+    }
+  }, [isEditing]);
+
   return (
     <>
-      {editingId === task.id ? (
+      {isEditing ? (
         <div onSubmit={updateTask}>
           <form>
             <input
+              ref={inputRef}
               value={editingValue}
               onChange={(e) => setEditingValue(e.target.value)}
-              checked={true}
             />
             <button type="submit">Salvar</button>
-            <button onClick={() => setEditingId(null)}>Cancelar</button>
           </form>
+          <button onClick={() => setEditingId(null)}>Cancelar</button>
         </div>
       ) : (
         <li>

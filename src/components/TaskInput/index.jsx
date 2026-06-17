@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { TaskContext } from "../../providers/TaskContext";
 
 const TaskInput = () => {
@@ -9,11 +9,14 @@ const TaskInput = () => {
     name: taskName,
     done: false,
   };
+  const inputRef = useRef(null);
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
     if (taskName.trim()) {
       addTask(task);
       setTaskName("");
+      inputRef.current.focus();
     }
   };
 
@@ -21,6 +24,7 @@ const TaskInput = () => {
     <>
       <form onSubmit={handleSubmit}>
         <input
+          ref={inputRef}
           placeholder="Escreva o nome da tarefa"
           value={taskName}
           onChange={(e) => setTaskName(e.target.value)}
