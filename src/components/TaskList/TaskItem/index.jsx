@@ -20,13 +20,16 @@ const TaskItem = ({ task }) => {
   return (
     <>
       {editingId === task.id ? (
-        <div>
-          <input
-            value={editingValue}
-            onChange={(e) => setEditingValue(e.target.value)}
-          />
-          <button onClick={updateTask}>Salvar</button>
-          <button onClick={() => setEditingId(null)}>Cancelar</button>
+        <div onSubmit={updateTask}>
+          <form>
+            <input
+              value={editingValue}
+              onChange={(e) => setEditingValue(e.target.value)}
+              checked={true}
+            />
+            <button type="submit">Salvar</button>
+            <button onClick={() => setEditingId(null)}>Cancelar</button>
+          </form>
         </div>
       ) : (
         <li>
