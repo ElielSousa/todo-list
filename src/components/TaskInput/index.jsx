@@ -29,7 +29,7 @@ const TaskInput = () => {
           value={taskName}
           onChange={(e) => setTaskName(e.target.value)}
         />
-        <button type="submit">Criar</button>
+        <button type="submit">➕</button>
       </form>
     </>
   );

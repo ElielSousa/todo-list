@@ -37,9 +37,9 @@ const TaskItem = ({ task }) => {
               value={editingValue}
               onChange={(e) => setEditingValue(e.target.value)}
             />
-            <button type="submit">Salvar</button>
+            <button type="submit">✔️</button>
           </form>
-          <button onClick={() => setEditingId(null)}>Cancelar</button>
+          <button onClick={() => setEditingId(null)}>❌</button>
         </div>
       ) : (
         <li>
@@ -49,8 +49,8 @@ const TaskItem = ({ task }) => {
             checked={task.done}
           />
           <p>{task.name}</p>
-          <button onClick={() => startUpdatingTask(task)}>Editar</button>
-          <button onClick={() => removeTask(task.id)}>Excluir</button>
+          <button onClick={() => startUpdatingTask(task)}>✏️</button>
+          <button onClick={() => removeTask(task.id)}>🗑️</button>
         </li>
       )}
     </>
