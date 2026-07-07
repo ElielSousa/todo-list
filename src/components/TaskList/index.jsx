@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { TaskContext } from "../../providers/TaskContext";
 import TaskItem from "./TaskItem";
+import TaskFilters from "../TaskFilters";
 
 const TaskList = () => {
   const { taskList } = useContext(TaskContext);
@@ -19,9 +20,7 @@ const TaskList = () => {
 
   return (
     <>
-      <button onClick={() => setFilter("all")}>Todas</button>
-      <button onClick={() => setFilter("pending")}>Pendentes</button>
-      <button onClick={() => setFilter("completed")}>Concluídas</button>
+      <TaskFilters filter={filter} onChangeFilter={setFilter} />
       {filteredTasks.length ? (
         <ul>
           {filteredTasks.map((task) => (
