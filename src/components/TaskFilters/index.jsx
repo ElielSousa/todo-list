@@ -1,3 +1,5 @@
+import Button from "./styles";
+
 const TaskFilters = ({ filter, onChangeFilter }) => {
   const filters = [
     { value: "all", label: "Todas" },
@@ -8,12 +10,12 @@ const TaskFilters = ({ filter, onChangeFilter }) => {
   return (
     <>
       {filters.map((filter) => (
-        <button
-          active={filter === filter.value}
+        <Button
+          $active={filter === filter.value}
           onClick={() => onChangeFilter(filter.value)}
         >
           {filter.label}
-        </button>
+        </Button>
       ))}
     </>
   );

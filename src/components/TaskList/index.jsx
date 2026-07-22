@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { TaskContext } from "../../providers/TaskContext";
 import TaskItem from "./TaskItem";
 import TaskFilters from "../TaskFilters";
+import List from "./styles";
 
 const TaskList = () => {
   const { taskList } = useContext(TaskContext);
@@ -19,8 +20,10 @@ const TaskList = () => {
   });
 
   return (
-    <>
-      <TaskFilters filter={filter} onChangeFilter={setFilter} />
+    <List>
+      <div className="filters">
+        <TaskFilters filter={filter} onChangeFilter={setFilter} />
+      </div>
       {filteredTasks.length ? (
         <ul>
           {filteredTasks.map((task) => (
@@ -30,7 +33,7 @@ const TaskList = () => {
       ) : (
         <p>Nenhuma tarefa aqui...</p>
       )}
-    </>
+    </List>
   );
 };
 

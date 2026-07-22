@@ -42,7 +42,9 @@ export const TaskProvider = ({ children }) => {
     if (!editingValue.trim()) return;
     setTaskList((prev) =>
       prev.map((task) =>
-        task.id === editingId ? { ...task, name: editingValue } : task,
+        task.id === editingId
+          ? { ...task, name: editingValue, done: false }
+          : task,
       ),
     );
     setEditingId(null);

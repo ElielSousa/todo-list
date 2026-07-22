@@ -9,6 +9,11 @@ const GlobalStyles = createGlobalStyle`
     body{
       font-family: "Inter", sans-serif;
       color: ${(props) => props.theme.colors.primary};
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 100vh;
+      padding-left: calc(100vw - 100%);
     }
   }
 `;
