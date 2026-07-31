@@ -2,6 +2,7 @@ import styled, { css } from "styled-components";
 
 const Button = styled.button`
   border: none;
+  cursor: pointer;
   border-radius: 50px;
   background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.secondary};
@@ -13,8 +14,7 @@ const Button = styled.button`
     0px -2px 0px rgba(0, 0, 0, 0.3) inset;
 
   &:hover {
-    transform: scale(1.05);
-    opacity: 70%;
+    transform: scale(1.1);
   }
 
   ${(props) =>

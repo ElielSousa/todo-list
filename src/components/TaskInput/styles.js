@@ -10,7 +10,6 @@ const Form = styled.form`
     padding: 8px;
     font-size: ${({ theme }) => theme.fontsize.default};
     width: 100%;
-    box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.3);
 
     &:focus {
       outline: none;
@@ -29,11 +28,16 @@ const Form = styled.form`
     box-shadow:
       0px 2px 0px rgba(0, 0, 0, 0.3),
       0px -2px 0px rgba(0, 0, 0, 0.3) inset;
-  }
 
-  button:hover {
-    transform: scale(1.05);
-    opacity: 70%;
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: ${({ theme }) => theme.colors.checked};
+      transform: none;
+    }
   }
 
   svg {
