@@ -9,12 +9,13 @@ const TaskFilters = ({ filter, onChangeFilter }) => {
 
   return (
     <>
-      {filters.map((filter) => (
+      {filters.map((item) => (
         <Button
-          $active={filter === filter.value}
-          onClick={() => onChangeFilter(filter.value)}
+          $active={filter === item.value}
+          onClick={() => onChangeFilter(item.value)}
+          key={item.value}
         >
-          {filter.label}
+          {item.label}
         </Button>
       ))}
     </>
