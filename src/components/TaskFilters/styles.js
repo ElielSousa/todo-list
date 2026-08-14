@@ -11,7 +11,8 @@ const Button = styled.button`
   transition: all 0.2s ease-in-out;
   box-shadow:
     0px 2px 0px rgba(0, 0, 0, 0.3),
-    0px -2px 0px rgba(0, 0, 0, 0.3) inset;
+    0px -2px 0px rgba(0, 0, 0, 0.3) inset,
+    0px 1px 0px rgba(130, 130, 130, 0.5) inset;
 
   &:hover {
     transform: scale(1.1);
@@ -20,8 +21,15 @@ const Button = styled.button`
   ${(props) =>
     props.$active &&
     css`
-      outline: 3px solid white;
-      border: 3px solid white;
+      box-shadow:
+        0px 1px 0px rgba(0, 0, 0, 0.3) inset,
+        0px -1px 0px rgba(130, 130, 130, 0.5) inset;
+
+      cursor: default;
+
+      &:hover {
+        transform: none;
+      }
     `}
 `;
 

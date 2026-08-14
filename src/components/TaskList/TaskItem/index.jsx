@@ -37,6 +37,7 @@ const TaskItem = ({ task }) => {
               ref={inputRef}
               value={editingValue}
               onChange={(e) => setEditingValue(e.target.value)}
+              maxLength={100}
             />
             <button
               type="submit"
@@ -65,7 +66,6 @@ const TaskItem = ({ task }) => {
             <label
               className={task.done ? "checked" : undefined}
               htmlFor={`checkbox-${task.id}`}
-              maxLength={20}
             >
               {task.name}
             </label>

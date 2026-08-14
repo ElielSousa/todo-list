@@ -11,6 +11,7 @@ const Item = styled.div`
     border-radius: 50px;
     padding: 12px;
     transition: all 0.2s ease-in-out;
+    max-height: 100px;
 
     &:hover {
       transform: scale(1.05);
@@ -22,7 +23,7 @@ const Item = styled.div`
 
   .customCheckbox {
     width: 100%;
-    margin-top: 2px;
+    min-width: 0;
   }
 
   .customCheckbox input {
@@ -30,22 +31,23 @@ const Item = styled.div`
   }
 
   .customCheckbox label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
     width: 100%;
     font-weight: 600;
     cursor: pointer;
-    margin-top: 2px;
+    word-break: break-word;
   }
 
   .customCheckbox label::before {
-    vertical-align: middle;
+    flex-shrink: 0;
     content: "";
     width: 16px;
     height: 16px;
     border: 2px solid ${({ theme }) => theme.colors.checked};
     border-radius: 50px;
     display: inline-block;
-    margin-bottom: 3px;
-    margin-right: 10px;
   }
 
   .customCheckbox input:checked ~ label::before {
@@ -115,7 +117,8 @@ const Item = styled.div`
       background-color: ${({ theme }) => theme.colors.primary};
       box-shadow:
         0px 2px 0px rgba(0, 0, 0, 0.3),
-        0px -2px 0px rgba(0, 0, 0, 0.3) inset;
+        0px -2px 0px rgba(0, 0, 0, 0.3) inset,
+        0px 1px 0px rgba(130, 130, 130, 0.5) inset;
       & svg {
         fill: ${({ theme }) => theme.colors.secondary};
       }

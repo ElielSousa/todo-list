@@ -28,6 +28,7 @@ const TaskInput = () => {
         placeholder="Adicione uma tarefa"
         value={taskName}
         onChange={(e) => setTaskName(e.target.value)}
+        maxLength={100}
       />
       <button type="submit" disabled={!taskName.trim() ? true : false}>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">

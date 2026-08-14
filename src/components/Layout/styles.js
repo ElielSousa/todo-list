@@ -7,9 +7,12 @@ const Container = styled.div`
   .contentLimit {
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
+    justify-self: center;
+    width: 100%;
+    padding: 0 20px;
     gap: 32px;
     max-width: 448px;
+    min-width: 375px;
   }
 
   .title {

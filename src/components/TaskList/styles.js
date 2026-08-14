@@ -7,9 +7,9 @@ const List = styled.div`
   gap: 32px;
 
   .filters {
+    width: 100%;
     display: flex;
-    justify-content: center;
-    gap: 24px;
+    justify-content: space-evenly;
   }
 
   ul {
