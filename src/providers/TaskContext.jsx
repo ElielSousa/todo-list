@@ -3,13 +3,7 @@ import { createContext, useEffect, useState } from "react";
 export const TaskContext = createContext({});
 
 export const TaskProvider = ({ children }) => {
-  const getItems = () => {
-    const data = JSON.parse(localStorage.getItem("tasks"));
-    if (data) {
-      return data;
-    }
-    return [];
-  };
+  const getItems = () => JSON.parse(localStorage.getItem("tasks")) || [];
 
   const setItems = () => {
     localStorage.setItem("tasks", JSON.stringify(taskList));
@@ -38,13 +32,12 @@ export const TaskProvider = ({ children }) => {
     setEditingValue(task.name);
   };
 
-  const updateTask = () => {
+  const updateTask = (event) => {
+    event.preventDefault();
     if (!editingValue.trim()) return;
     setTaskList((prev) =>
       prev.map((task) =>
-        task.id === editingId
-          ? { ...task, name: editingValue, done: false }
-          : task,
+        task.id === editingId ? { ...task, name: editingValue } : task,
       ),
     );
     setEditingId(null);

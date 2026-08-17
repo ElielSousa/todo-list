@@ -8,10 +8,9 @@ const Item = styled.div`
     width: 100%;
     align-items: center;
     border: 2px solid ${({ theme }) => theme.colors.checked};
-    border-radius: 50px;
+    border-radius: 30px;
     padding: 12px;
     transition: all 0.2s ease-in-out;
-    max-height: 100px;
 
     &:hover {
       transform: scale(1.05);
@@ -23,6 +22,7 @@ const Item = styled.div`
 
   .customCheckbox {
     width: 100%;
+    max-width: 300px;
     min-width: 0;
   }
 
